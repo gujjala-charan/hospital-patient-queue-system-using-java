@@ -43,27 +43,27 @@ public class HospitalQueueSystem {
     public void checkIn(String name, int severity) {
         Patient newPatient = new Patient(name, severity, arrivalCounter++);
         patientQueue.add(newPatient);
-        System.out.println("\n✅ CHECK-IN: '" + name + "' (Severity: " + severity + ") has been added to the queue.");
+        System.out.println("\n CHECK-IN: '" + name + "' (Severity: " + severity + ") has been added to the queue.");
     }
  
     public void checkOut() {
         if (!patientQueue.isEmpty()) {
             Patient nextPatient = patientQueue.poll();
-            System.out.println("\n🩺 CHECK-OUT: Doctor is now seeing '" + nextPatient.name + "' (Severity: " + nextPatient.severity + ").");
+            System.out.println("\n CHECK-OUT: Doctor is now seeing '" + nextPatient.name + "' (Severity: " + nextPatient.severity + ").");
         } else {
-            System.out.println("\n❌ The queue is empty. No patients to check out.");
+            System.out.println("\n The queue is empty. No patients to check out.");
         }
     }
  
     public void displayQueue() {
         if (patientQueue.isEmpty()) {
-            System.out.println("\n✅ The current queue is empty.");
+            System.out.println("\n The current queue is empty.");
             return;
         }
  
         // Create a temporary queue to display the sorted patients without modifying the original queue
         PriorityQueue<Patient> tempQueue = new PriorityQueue<>(patientQueue);
-        System.out.println("\n🏥 CURRENT PATIENT QUEUE:");
+        System.out.println("\n CURRENT PATIENT QUEUE:");
         int i = 1;
         while (!tempQueue.isEmpty()) {
             System.out.println(i++ + ". " + tempQueue.poll());
@@ -72,7 +72,7 @@ public class HospitalQueueSystem {
  
     public static void main(String[] args) {
         HospitalQueueSystem system = new HospitalQueueSystem();
-        System.out.println("--- 🩺 Starting Hospital Patient Queue System Simulation ---");
+        System.out.println("---  Starting Hospital Patient Queue System Simulation ---");
  
         // Check-in patients
         system.checkIn("John", 3);
@@ -89,4 +89,5 @@ public class HospitalQueueSystem {
         // Display the queue after check-out
         system.displayQueue();
     }
+
 }
